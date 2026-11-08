@@ -1,17 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, Play, ShieldCheck, Lock } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, ShieldCheck, Lock } from 'lucide-react';
 
 export const VslView: React.FC = () => {
   const [secondsLeft, setSecondsLeft] = useState(180);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Inject vturb player script if needed
-    if (!document.querySelector('script[data-vturb-vsl]')) {
-      const playerScript = document.createElement('script');
-      playerScript.dataset.vturbVsl = 'true';
-      playerScript.src =
-        'https://scripts.converteai.net/55369419-630b-4afd-8556-faecd90bf85b/players/6ae506f2d653f6988a102713/v4/player.js';
+    // Mount the user's specific vturb-smartplayer
+    if (videoContainerRef.current) {
+      videoContainerRef.current.innerHTML = `
+        <vturb-smartplayer id="vid-6af00589d779234bdaf8a87a" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
+          <div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 178.21782178217822% 0 0; z-index: 0; background-color: black;"></div>
+        </vturb-smartplayer>
+      `;
+    }
+
+    const scriptSrc =
+      'https://scripts.converteai.net/0f437237-527a-4535-bdf5-d5d791480e65/players/6af00589d779234bdaf8a87a/v4/player.js';
+
+    // Inject the specific vturb player script
+    let playerScript = document.querySelector(
+      `script[src="${scriptSrc}"]`
+    ) as HTMLScriptElement | null;
+    if (!playerScript) {
+      playerScript = document.createElement('script');
+      playerScript.src = scriptSrc;
       playerScript.async = true;
       document.head.appendChild(playerScript);
     }
@@ -49,44 +62,7 @@ export const VslView: React.FC = () => {
       </div>
 
       <div className="vsl-video-wrap w-full max-w-[420px] rounded-2xl overflow-hidden shadow-2xl border-2 border-orange-500/20 bg-black relative">
-        <div
-          id="vid-6ae506f2d653f6988a102713"
-          className="relative w-full aspect-9/16 bg-gradient-to-b from-gray-950 to-black flex flex-col items-center justify-center p-6 text-center"
-        >
-          {!isPlaying ? (
-            <button
-              type="button"
-              onClick={() => setIsPlaying(true)}
-              className="group flex flex-col items-center cursor-pointer active:scale-95 transition"
-              aria-label="Iniciar reprodução do vídeo explicativo"
-            >
-              <div className="w-20 h-20 rounded-full bg-[#f59e0b] flex items-center justify-center shadow-lg shadow-orange-500/40 group-hover:scale-110 transition mb-4">
-                <Play className="w-8 h-8 fill-[#1a1a2e] text-[#1a1a2e] ml-1" />
-              </div>
-              <span className="text-white font-bold text-sm tracking-wide">
-                Clique para Iniciar o Vídeo
-              </span>
-              <span className="text-orange-300 text-xs mt-1">
-                Vídeo oficial KWIK Angola
-              </span>
-            </button>
-          ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center p-4">
-              <div className="w-full max-w-xs space-y-4 text-left bg-white/5 p-4 rounded-xl border border-white/10 backdrop-blur-md">
-                <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs">
-                  <ShieldCheck className="w-4 h-4" />
-                  Reproduzindo Guia de Saque Instantâneo
-                </div>
-                <div className="h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
-                  <div className="h-full bg-orange-500 w-3/4 animate-pulse" />
-                </div>
-                <p className="text-xs text-gray-300">
-                  Transmissão segura de autenticação de titularidade e liberação imediata de fundos.
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
+        <div ref={videoContainerRef} className="w-full" />
       </div>
 
       {/* Countdown and Unlock CTA */}
@@ -94,7 +70,7 @@ export const VslView: React.FC = () => {
         {isUnlocked ? (
           <div id="vsl-cta" className="animate-fade-in">
             <a
-              href="https://mentora.ao/produto/4218b62b-4548-4fc1-9ce7-acb2e635358a"
+              href="https://entitypay.online/checkout/a602354428"
               className="vsl-cta-btn flex items-center justify-center gap-3 w-full py-4 px-6 rounded-xl bg-[#f59e0b] text-[#1a1a2e] font-black text-lg shadow-xl shadow-orange-500/30 hover:brightness-105 active:scale-98 transition"
               target="_blank"
               rel="noopener noreferrer"

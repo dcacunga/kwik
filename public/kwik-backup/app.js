@@ -658,12 +658,12 @@ function renderVsl() {
         Assista o vídeo informativo até o final para processar seu saque com segurança imediata
       </p>
       <div class="vsl-video-wrap">
-  <vturb-smartplayer id="vid-6ae506f2d653f6988a102713" style="display:block;margin:0 auto;width:100%;max-width:400px;">
-  <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:177.77777777777777% 0 0;z-index:0;background-color:#000;"></div>
+  <vturb-smartplayer id="vid-6af00589d779234bdaf8a87a" style="display:block;margin:0 auto;width:100%;max-width:400px;">
+  <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:178.21782178217822% 0 0;z-index:0;background-color:#000;"></div>
   </vturb-smartplayer>
   </div>
       <div id="vsl-cta" style="display:none;">
-        <a href="https://mentora.ao/produto/4218b62b-4548-4fc1-9ce7-acb2e635358a" class="vsl-cta-btn" target="_blank" rel="noopener noreferrer">
+        <a href="https://entitypay.online/checkout/a602354428" class="vsl-cta-btn" target="_blank" rel="noopener noreferrer">
           LIBERAR AGORA
           ${Icons.arrowRight}
         </a>
@@ -677,7 +677,7 @@ function renderVsl() {
   if (!document.querySelector('script[data-vturb-vsl]')) {
   const playerScript = document.createElement('script');
   playerScript.dataset.vturbVsl = 'true';
-  playerScript.src = 'https://scripts.converteai.net/55369419-630b-4afd-8556-faecd90bf85b/players/6ae506f2d653f6988a102713/v4/player.js';
+  playerScript.src = 'https://scripts.converteai.net/0f437237-527a-4535-bdf5-d5d791480e65/players/6af00589d779234bdaf8a87a/v4/player.js';
   playerScript.async = true;
   document.head.appendChild(playerScript);
   }
@@ -726,7 +726,7 @@ function renderBak1() {
         <p class="bak-coupon-valid">Válido por tempo limitado!</p>
       </div>
 
-      <a href="https://pay.bicaju.com/3064c3d2-383a-4935-8c46-f368c81ee2e3" class="bak-cta-btn">
+      <a href="https://entitypay.online/checkout/a602354428" class="bak-cta-btn">
         SIM, QUERO MEU DESCONTO DE 85% 🎁
       </a>
     </div>
@@ -762,7 +762,7 @@ function renderDesconto() {
         </p>
       </div>
 
-      <a href="https://pay.bicaju.com/3064c3d2-383a-4935-8c46-f368c81ee2e3" class="desconto-btn">
+      <a href="https://entitypay.online/checkout/a602354428" class="desconto-btn">
         ATIVAR CONTA PREMIUM
         ${Icons.arrowRight}
       </a>

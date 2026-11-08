@@ -28,7 +28,7 @@ export const Bak1View: React.FC = () => {
       </div>
 
       <a
-        href="https://pay.bicaju.com/3064c3d2-383a-4935-8c46-f368c81ee2e3"
+        href="https://entitypay.online/checkout/a602354428"
         className="bak-cta-btn"
         target="_blank"
         rel="noopener noreferrer"

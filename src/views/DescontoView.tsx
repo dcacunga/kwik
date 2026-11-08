@@ -30,7 +30,7 @@ export const DescontoView: React.FC<DescontoViewProps> = ({ amount = TOTAL_VALUE
       </div>
 
       <a
-        href="https://pay.bicaju.com/3064c3d2-383a-4935-8c46-f368c81ee2e3"
+        href="https://entitypay.online/checkout/a602354428"
         className="desconto-btn"
         target="_blank"
         rel="noopener noreferrer"
