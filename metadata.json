@@ -1,0 +1,6 @@
+{
+  "name": "KWIK — Kwanza Instantâneo",
+  "description": "Valide códigos KWIK e transforme cada oferta em kwanza instantâneo na sua conta. Cadastre-se e comece agora.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
