@@ -587,6 +587,35 @@ ol, ul { list-style: none; }
 .btn-validate:active { transform: scale(0.99); }
 .btn-validate:hover { filter: brightness(1.08); }
 
+/* Multicaixa Express Confirm Button */
+.btn-confirmar-express {
+  background-color: #fe9f02 !important;
+  color: #000000 !important;
+  border-radius: 9999px !important;
+  font-weight: 700 !important;
+  font-size: 21px !important;
+  height: 58px !important;
+  width: 100% !important;
+  max-width: 340px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  transition: transform 0.1s, filter 0.15s !important;
+}
+
+.btn-confirmar-express:active {
+  transform: scale(0.98) !important;
+}
+
+.btn-confirmar-express:hover {
+  filter: brightness(1.03) !important;
+}
+
 /* ===== Back button ===== */
 .back-btn {
   position: absolute;
