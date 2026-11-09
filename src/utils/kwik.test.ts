@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   formatKz,
+  formatPhoneNumber,
+  formatExpressAmount,
   getCouponInputState,
   validatePhone,
   validateWithdrawalAccount,
@@ -71,3 +73,15 @@ test('validateCouponSubmission handles exact match, used codes, out-of-order cod
   assert.equal(res4.success, false);
   assert.match(res4.error || '', /Código inválido/);
 });
+
+test('formatPhoneNumber formats into 3-digit groups', () => {
+  assert.equal(formatPhoneNumber('928457885'), '928 457 885');
+  assert.equal(formatPhoneNumber('+244 928457885'), '928 457 885');
+  assert.equal(formatPhoneNumber('928 457 885'), '928 457 885');
+});
+
+test('formatExpressAmount formats currency matching receipt style', () => {
+  assert.equal(formatExpressAmount(125000), '125.000 Kz');
+  assert.equal(formatExpressAmount(3000), '3.000 Kz');
+});
+

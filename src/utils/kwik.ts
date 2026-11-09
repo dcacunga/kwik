@@ -114,3 +114,27 @@ export function validateCouponSubmission(
 
   return { success: false, error: 'Código inválido. Confira os 8 dígitos do KWIK.' };
 }
+
+/**
+ * Formats a phone number into Multicaixa Express style: "928 457 885"
+ */
+export function formatPhoneNumber(phone: string): string {
+  if (!phone) return '928 457 885';
+  const clean = phone.replace(/\D/g, '');
+  // Extract 9 local digits (if prefixed by country code like 244)
+  const local = clean.length > 9 && clean.startsWith('244') ? clean.slice(3) : clean.slice(-9);
+  if (local.length === 9) {
+    return `${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6, 9)}`;
+  }
+  return phone;
+}
+
+/**
+ * Formats currency in the exact Multicaixa Express style from receipt: "125.000 Kz"
+ */
+export function formatExpressAmount(value: number): string {
+  const intVal = Math.round(value || 0);
+  const formatted = intVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  return `${formatted} Kz`;
+}
+

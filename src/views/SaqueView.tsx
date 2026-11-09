@@ -6,6 +6,7 @@ import { validateWithdrawalAccount, WithdrawalDetails } from '../utils/kwik';
 interface SaqueViewProps {
   balance: number;
   userName: string;
+  userPhone?: string;
   initialDetails?: WithdrawalDetails | null;
   onSuccess: (details: WithdrawalDetails) => void;
   onBack: () => void;
@@ -14,6 +15,7 @@ interface SaqueViewProps {
 export const SaqueView: React.FC<SaqueViewProps> = ({
   balance,
   userName,
+  userPhone = '',
   initialDetails,
   onSuccess,
   onBack,
@@ -22,7 +24,9 @@ export const SaqueView: React.FC<SaqueViewProps> = ({
     initialDetails?.method || 'express'
   );
   const [holder, setHolder] = useState(initialDetails?.holder || userName || '');
-  const [account, setAccount] = useState(initialDetails?.account || '');
+  const [account, setAccount] = useState(
+    initialDetails?.account || (userPhone ? userPhone.replace(/\D/g, '').slice(-9) : '')
+  );
   const [error, setError] = useState<string | null>(null);
 
   const handleAccountChange = (e: React.ChangeEvent<HTMLInputElement>) => {

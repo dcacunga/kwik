@@ -155,7 +155,7 @@ export default function App() {
       ...prev,
       lastWithdrawal: prev.balance || TOTAL_VALUE,
     }));
-    navigate('/saque-sucesso');
+    navigate('/multicaixa');
   };
 
   const withdrawalAmount = state.lastWithdrawal || state.balance || TOTAL_VALUE;
@@ -186,6 +186,7 @@ export default function App() {
           <SaqueView
             balance={state.balance}
             userName={state.name}
+            userPhone={state.phone}
             initialDetails={state.withdrawalDetails}
             onSuccess={handleSaqueSuccess}
             onBack={() => navigate('/')}
@@ -225,6 +226,7 @@ export default function App() {
             amount={withdrawalAmount}
             withdrawalDetails={state.withdrawalDetails}
             userName={state.name}
+            userPhone={state.phone}
             onConfirm={() => navigate('/vsl')}
           />
         );
