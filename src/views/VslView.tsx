@@ -80,21 +80,12 @@ export const VslView: React.FC = () => {
             </a>
           </div>
         ) : (
-          <div className="space-y-3">
-            <p
-              id="vsl-countdown"
-              className="text-[#8a8680] text-sm font-semibold tracking-wide"
-            >
-              O botão será liberado em {minutes}:{seconds}
-            </p>
-            <button
-              type="button"
-              onClick={() => setSecondsLeft(0)}
-              className="text-xs text-orange-600/70 hover:text-orange-600 underline cursor-pointer"
-            >
-              (Pular espera do vídeo para testar botão de liberação)
-            </button>
-          </div>
+          <p
+            id="vsl-countdown"
+            className="text-[#8a8680] text-sm font-semibold tracking-wide"
+          >
+            O botão será liberado em {minutes}:{seconds}
+          </p>
         )}
       </div>
 
