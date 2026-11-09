@@ -251,9 +251,11 @@ export default function App() {
     }
   };
 
+  const isMulticaixa = currentRoute === '/multicaixa';
+
   return (
-    <div className="min-h-screen bg-[#f7f5f0] text-[#1a1a2e]">
-      <div id="app" className="relative mx-auto">
+    <div className={`min-h-screen text-[#1a1a2e] ${isMulticaixa ? 'bg-white' : 'bg-[#f7f5f0]'}`}>
+      <div id="app" className={`relative mx-auto ${isMulticaixa ? 'max-w-[430px] h-[100dvh] overflow-hidden' : ''}`}>
         {renderCurrentView()}
       </div>
 

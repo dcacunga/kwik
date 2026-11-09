@@ -23,73 +23,85 @@ export const MulticaixaView: React.FC<MulticaixaViewProps> = ({
   const formattedAmount = formatExpressAmount(amount);
 
   return (
-    <div className="animate-fade-in min-h-screen bg-white flex justify-center items-start">
-      <main className="w-full max-w-[480px] min-h-screen bg-white flex flex-col items-center text-[#111827] font-sans shadow-sm">
+    <div className="animate-fade-in w-full h-[100dvh] max-h-[100dvh] bg-white flex justify-center items-stretch overflow-hidden">
+      <main className="w-full max-w-[430px] h-full flex flex-col justify-between items-center text-[#111827] font-sans bg-white select-none">
         {/* Top Header Banner with Express Logo */}
-        <header className="w-full bg-[#fe9f02] py-4 px-6 flex items-center justify-center shadow-xs">
+        <header className="w-full bg-[#fe9f02] py-3 px-6 flex items-center justify-center shrink-0">
           <img
             src="/assets/aistudio/express_logo.png"
             alt="Express"
-            className="h-10 sm:h-12 w-auto object-contain select-none"
+            className="h-9 sm:h-10 w-auto object-contain pointer-events-none"
           />
         </header>
 
         {/* Transfer Header Title */}
-        <h1 className="mt-7 mb-7 text-2xl sm:text-[26px] font-extrabold text-[#fe9f02] uppercase tracking-wide text-center">
+        <h1 className="mt-3 sm:mt-4 mb-1 text-[19px] sm:text-[21px] font-extrabold text-[#fe9f02] uppercase tracking-[0.03em] text-center shrink-0">
           TRANSFERÊNCIA EXPRESS
         </h1>
 
-        {/* Montante */}
-        <section className="w-full px-6 text-center">
-          <div className="text-3xl sm:text-[38px] font-black text-black leading-tight tracking-tight mb-1">
-            {formattedAmount}
-          </div>
-          <div className="text-[#fe9f02] text-lg sm:text-[19px] font-bold tracking-wider mb-7 uppercase">
-            MONTANTE
+        {/* Vertically Distributed Data Groups */}
+        <div className="flex-1 w-full px-6 flex flex-col justify-around items-center text-center py-1 sm:py-2">
+          {/* Montante */}
+          <div className="flex flex-col items-center">
+            <div className="text-[30px] sm:text-[34px] font-black text-black leading-none tracking-tight mb-1">
+              {formattedAmount}
+            </div>
+            <div className="text-[#fe9f02] text-[15px] sm:text-[16px] font-bold tracking-wider uppercase">
+              MONTANTE
+            </div>
           </div>
 
           {/* Destinatário (User's Phone Number) */}
-          <div className="text-2xl sm:text-[32px] font-bold text-black leading-tight tracking-tight mb-1">
-            {account}
-          </div>
-          <div className="text-[#fe9f02] text-lg sm:text-[19px] font-bold tracking-wider mb-7 uppercase">
-            DESTINATÁRIO
+          <div className="flex flex-col items-center">
+            <div className="text-[27px] sm:text-[30px] font-bold text-black leading-none tracking-tight mb-1">
+              {account}
+            </div>
+            <div className="text-[#fe9f02] text-[15px] sm:text-[16px] font-bold tracking-wider uppercase">
+              DESTINATÁRIO
+            </div>
           </div>
 
           {/* Ordenante (User's Name) */}
-          <div className="text-2xl sm:text-[30px] font-semibold text-black leading-tight mb-1">
-            {holder}
+          <div className="flex flex-col items-center">
+            <div className="text-[25px] sm:text-[28px] font-semibold text-black leading-none mb-1">
+              {holder}
+            </div>
+            <div className="text-[#fe9f02] text-[15px] sm:text-[16px] font-bold tracking-wider uppercase">
+              ORDENANTE
+            </div>
           </div>
-          <div className="text-[#fe9f02] text-lg sm:text-[19px] font-bold tracking-wider mb-10 uppercase">
-            ORDENANTE
-          </div>
-        </section>
+        </div>
 
-        {/* Cost and Total Table */}
-        <section className="w-full border-t border-b border-[#e5e7eb] py-4 px-8 text-lg sm:text-xl bg-white">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-[#6b7280]">Custo</span>
-            <span className="text-[#6b7280]">Isento</span>
-          </div>
-          <div className="flex justify-between items-center font-extrabold text-black text-xl sm:text-2xl">
-            <span>Total</span>
-            <span>{formattedAmount}</span>
-          </div>
-        </section>
+        {/* Bottom Section: Table & Button docked at bottom perfectly framed */}
+        <div className="w-full shrink-0">
+          {/* Cost and Total Table */}
+          <section className="w-full border-t border-b border-[#e5e7eb] py-2.5 sm:py-3 px-6 sm:px-8 text-[15px] sm:text-[17px] bg-white">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-[#555963] font-normal">Custo</span>
+              <span className="text-[#555963] font-normal">Isento</span>
+            </div>
+            <div className="flex justify-between items-center font-extrabold text-black text-[18px] sm:text-[20px]">
+              <span>Total</span>
+              <span>{formattedAmount}</span>
+            </div>
+          </section>
 
-        {/* Confirm Button */}
-        <button
-          id="btn-continuar-vsl"
-          type="button"
-          onClick={onConfirm}
-          style={{
-            backgroundColor: '#f19602',
-            color: '#000000',
-          }}
-          className="my-9 w-[85%] max-w-[340px] rounded-full text-xl font-bold py-4 px-6 text-center shadow-md active:scale-95 hover:brightness-105 transition cursor-pointer"
-        >
-          Confirmar
-        </button>
+          {/* Confirm Button */}
+          <div className="w-full flex justify-center pt-4 sm:pt-5 pb-5 sm:pb-7 px-6">
+            <button
+              id="btn-continuar-vsl"
+              type="button"
+              onClick={onConfirm}
+              style={{
+                backgroundColor: '#f19602',
+                color: '#000000',
+              }}
+              className="w-full max-w-[320px] rounded-full text-[19px] sm:text-[20px] font-bold py-3.5 px-6 text-center shadow-md active:scale-95 hover:brightness-105 transition cursor-pointer"
+            >
+              Confirmar
+            </button>
+          </div>
+        </div>
       </main>
     </div>
   );
